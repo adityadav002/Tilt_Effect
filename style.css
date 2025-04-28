@@ -1,0 +1,181 @@
+/** @format */
+
+/* To copy the style anyWhere: (root)*/
+:root {
+  --green: #2ee36d;
+  --green-dark: #1f8c3f;
+  --blue: #79c0ff;
+  --text: #f0f6fc;
+  --bg-dark: #0d1117;
+  --bg-light: #161b22;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  background-color: var(--bg-dark);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.spotlight {
+  width: 80vw;
+  height: 80vh;
+  background: var(--bg-light);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(46, 227, 109, 0.2);
+  display: flex;
+  padding: 40px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(6px);
+  transition: all 0.4s ease;
+}
+
+.spotlight:hover {
+  box-shadow: 0 0 60px rgba(46, 227, 109, 0.4);
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(var(--green) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  opacity: 0.06;
+  pointer-events: none;
+  animation: moveDots 30s linear infinite;
+}
+
+@keyframes moveDots {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 20px);
+  }
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 40px;
+  z-index: 1;
+}
+
+.left img.logo {
+  width: 140px;
+  margin-bottom: 30px;
+  transition: filter 0.3s ease;
+}
+
+.left img.logo:hover {
+  filter: drop-shadow(0 0 15px var(--green));
+}
+
+.left h1 {
+  font-size: 2.8rem;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+.left h2 {
+  font-size: 1.3rem;
+  color: #a1a1aa;
+  margin-bottom: 20px;
+}
+
+.left p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+.buttons a {
+  text-decoration: none;
+  padding: 12px 22px;
+  background-color: var(--green);
+  color: #0d1117;
+  border-radius: 6px;
+  margin-right: 12px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-weight: bold;
+  box-shadow: 0 0 0 transparent;
+}
+
+.buttons a:hover {
+  background-color: #39ff90;
+  box-shadow: 0 0 12px var(--green);
+}
+
+.tech-stack {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-stack span {
+  background: var(--bg-dark);
+  border: 1px solid var(--green);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.tech-stack span:hover {
+  background-color: #1e2a1f;
+  box-shadow: 0 0 8px var(--green);
+}
+
+.right {
+  flex: 1;
+  background: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png")
+    no-repeat center;
+  background-size: 60%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .spotlight {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .left {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .buttons a {
+    margin: 10px 5px;
+  }
+
+  .right {
+    display: none;
+  }
+}
